@@ -1,9 +1,9 @@
 Use this command in the terminal to install Flask, SQLAlchemy, and Flask-SQLAlchemy.
 
-**"pip install flask sqlalchemy flask_sqlalchemy"
+# 'pip install flask sqlalchemy flask_sqlalchemy'
 
 Once you have those installed you should be able to just type this command into the terminal
 
-**"flask run"
+# 'flask run'
 
 and it will run and give you a link. You will have to ctrl click the link to go to it.
