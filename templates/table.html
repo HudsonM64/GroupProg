@@ -1,44 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ table_name }}</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-    </style>
-</head>
-<body>
-    <h1>Viewing Table: {{ table_name }}</h1>
+<h1>Table: {{ table_name }}</h1>
 
-    <form action="" method="get" onsubmit="location.href='/table/' + document.getElementById('tableSelect').value; return false;">
-        <label for="tableSelect">Switch Table:</label>
-        <select id="tableSelect">
-            {% for table in tables %}
-                <option value="{{ table }}" {% if table == table_name %}selected{% endif %}>{{ table }}</option>
+<form action="" method="get" onsubmit="location.href='/table/' + document.getElementById('tableSelect').value; return false;">
+    <label>Switch Table:</label>
+    <select id="tableSelect">
+        {% for table in tables %}
+            <option value="{{ table }}" {% if table == table_name %}selected{% endif %}>{{ table }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Go</button>
+</form>
+
+<h2>Add New Entry</h2>
+<form method="POST">
+    {% for col in columns %}
+        <label>{{ col }}:</label>
+        <input name="column" type="hidden" value="{{ col }}">
+        <input name="value" type="text">
+        <br>
+    {% endfor %}
+        <button type="submit">Insert</button>
+    {% if message %}
+        <p style="color:green;">{{ message }}</p>
+    {% endif %}
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+</form>
+
+<h2>Table Data</h2>
+<table border="1">
+    <thead>
+        <tr>
+            {% for col in columns %}
+                <th>{{ col }}</th>
             {% endfor %}
-        </select>
-        <button type="submit">Go</button>
-    </form>
-
-    <table>
-        <thead>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
             <tr>
                 {% for col in columns %}
-                    <th>{{ col }}</th>
+                    <td>{{ row[col] }}</td>
                 {% endfor %}
             </tr>
-        </thead>
-        <tbody>
-            {% for row in rows %}
-                <tr>
-                    {% for col in columns %}
-                        <td>{{ row[col] }}</td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<a href="/query">Run SQL Query</a>

@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Select Table</title>
-</head>
-<body>
-    <h1>Select a Table to View</h1>
-    <form action="" method="get" onsubmit="location.href='/table/' + document.getElementById('tableSelect').value; return false;">
-        <select id="tableSelect">
-            {% for table in tables %}
-                <option value="{{ table }}">{{ table }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">View Table</button>
-    </form>
-</body>
-</html>
+<h1>Select a Table</h1>
+<form action="" method="get" onsubmit="location.href='/table/' + document.getElementById('tableSelect').value; return false;">
+    <select id="tableSelect">
+        {% for table in tables %}
+            <option value="{{ table }}">{{ table }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">View Table</button>
+</form>
+<br>
+<a href="/query">Run SQL Query</a>
