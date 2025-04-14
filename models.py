@@ -8,7 +8,7 @@ from sqlalchemy.sql.expression import quoted_name
 class Catalogue(db.Model):
     __tablename__ = 'Catalogue'
     CatName = db.Column(db.String, primary_key=True)
-    CID = db.Column(db.Integer, nullable=False)
+    GID = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return f'<Catalogue {self.CatName}>'

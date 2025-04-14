@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 CREATE TABLE IF NOT EXISTS "Catalogue" (
 	"CatName"	TEXT,
-	"CID"	INTEGER NOT NULL,
+	"GID"	INTEGER NOT NULL,
 	PRIMARY KEY("CatName")
 );
 CREATE TABLE IF NOT EXISTS "CustomerAcct" (
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS "User" (
 	"AccessLv"	INTEGER NOT NULL,
 	PRIMARY KEY("UID" AUTOINCREMENT)
 );
-INSERT INTO "Catalogue" ("CatName","CID") VALUES ('Summer Menu Signs',1),
+INSERT INTO "Catalogue" ("CatName","GID") VALUES ('Summer Menu Signs',1),
  ('Winter Promo Materials',1),
  ('Staff Uniforms',2),
  ('Outdoor Signage',3),
